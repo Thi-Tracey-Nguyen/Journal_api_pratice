@@ -1,4 +1,5 @@
 import express from 'express'
+import mongoose from 'mongoose'
 
 const categories = ['Food', 'Coding', 'Work', 'Others'] 
 const entries = [
@@ -6,6 +7,9 @@ const entries = [
     {category: 'Coding', content: 'Express is cool!'},
     {category: 'Work', content: 'Another day at the office'},
 ]
+
+mongoose.connect('mongodb+srv://thinguyen:jetmoon@cluster0.3lf84rb.mongodb.net/Journal')
+    .then((m) => console.log(m.connection.readyState ? 'Connected' : 'Mongoose failed to connect'))
 
 const app = express()
 const port = 4001
